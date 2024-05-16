@@ -127,3 +127,113 @@
   - How do we keep the momentum going?
 - The CSI Approach : A structured approach to identifying improvement opportunities.
 - The CSI Improvement Plan : A plan for improving services.
+
+## Release and Deployment management
+
+- Release and Deployment Management : The objective of Release and Deployment Management is to build, test and deploy releases into production.
+
+### The Release and Deployment Management process includes the following activities:
+
+- Release Planning : The process responsible for planning the release of services and components.
+- Release Build : The process responsible for building, testing and deploying releases.
+- Release Deployment : The process responsible for deploying releases into production.
+- Early Life Support : The process responsible for providing support to users during the early stages of a new or changed IT service.
+- Release Closure : The process responsible for closing a release.
+
+## Service Asset and Configuration management
+
+- Service Asset and Configuration Management : The objective of Service Asset and Configuration Management is to maintain information about configuration items required to deliver an IT service.
+
+### The Service Asset and Configuration Management process includes the following activities:
+
+- Configuration Identification : The process responsible for identifying configuration items.
+- Configuration Control : The process responsible for controlling configuration items.
+- Configuration Status Accounting : The process responsible for maintaining information about configuration items.
+- Configuration Verification and Audit : The process responsible for verifying and auditing configuration items.
+
+## Service Validation and Testing
+
+- Service Validation and Testing : The objective of Service Validation and Testing is to ensure that deployed releases and the resulting services meet customer expectations.
+
+### The Service Validation and Testing process includes the following activities:
+
+- Plan and Design : The process responsible for planning and designing tests.
+- Verify : The process responsible for verifying that the service meets the requirements.
+- Validate : The process responsible for validating that the service meets the customer's needs.
+- Evaluate : The process responsible for evaluating the test results.
+
+## Evaluation
+
+- Evaluation : The objective of Evaluation is to assess a new or changed IT service to ensure that risks have been managed and to help determine whether to proceed with the change.
+
+### The Evaluation process includes the following activities:
+
+- Assess : The process responsible for assessing the new or changed IT service.
+- Review : The process responsible for reviewing the assessment results.
+- Plan : The process responsible for planning the next steps.
+- Implement : The process responsible for implementing the changes.
+
+## Service Reporting
+
+- Service Reporting : The process responsible for producing and maintaining operational reports and management information.
+
+### The Service Reporting process includes the following activities:
+
+- Define : The process responsible for defining the reports and information required.
+- Collect : The process responsible for collecting the data.
+- Analyze : The process responsible for analyzing the data.
+- Present : The process responsible for presenting the information.
+- Use : The process responsible for using the information to make decisions.
+
+## The 7-Step Improvement process
+
+- The 7-Step Improvement Process : A 7-step process for continually improving services. The steps are:
+  1. Identify the strategy for improvement.
+  2. Define what you will measure.
+  3. Gather the data.
+  4. Process the data.
+  5. Analyze the information and data.
+  6. Present and use the information.
+  7. Implement corrective action.
+
+## The Deming cycle
+
+- The Deming Cycle : A four-stage cycle for quality control and continuous improvement. The stages are:
+  1. Plan : Plan the improvement.
+  2. Do : Implement the improvement.
+  3. Check : Check the results.
+  4. Act : Take action based on the results.
+
+## Service Desk
+
+- Service Desk : The single point of contact between the service provider and the users.
+
+### Types of Service Desks:
+
+- Local Service Desk : A Service Desk that provides support to a specific location.
+- Centralized Service Desk : A Service Desk that provides support to multiple locations.
+- Virtual Service Desk : A Service Desk that provides support remotely.
+
+## Incident Management & Request Fulfillment
+
+- Incident Management : The process responsible for managing the lifecycle of all incidents.
+- Request Fulfillment : The process responsible for managing the lifecycle of all service requests.
+
+### The Incident Management process includes the following activities:
+
+- Incident Identification : The process responsible for identifying incidents.
+- Incident Logging : The process responsible for logging incidents.
+- Incident Categorization : The process responsible for categorizing incidents.
+- Incident Prioritization : The process responsible for prioritizing incidents.
+- Incident Diagnosis : The process responsible for diagnosing incidents.
+- Incident Resolution : The process responsible for resolving incidents.
+- Incident Closure : The process responsible for closing incidents.
+
+### The Request Fulfillment process includes the following activities:
+
+- Request Identification : The process responsible for identifying requests.
+- Request Logging : The process responsible for logging requests.
+- Request Categorization : The process responsible for categorizing requests.
+- Request Prioritization : The process responsible for prioritizing requests.
+- Request Fulfillment : The process responsible for fulfilling requests.
+- Request Closure : The process responsible for closing requests.
