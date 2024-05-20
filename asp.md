@@ -856,3 +856,504 @@ The life cycle of an ASP.NET application consists of a series of steps that are 
 - **UpdateRequestCache**: Updating cache with response.
 - **EndRequest**: When the request ends.
 - **Application_End**: When the application ends.
+
+## Difference between ASP.NET and ASP.NET Core
+
+| **Feature**                | **ASP.NET**                                              | **ASP.NET Core**                                                          |
+| -------------------------- | -------------------------------------------------------- | ------------------------------------------------------------------------- |
+| **Framework**              | Full .NET Framework                                      | .NET Core (cross-platform), and also supports .NET 5 and later versions   |
+| **Platform**               | Windows-only                                             | Cross-platform (Windows, macOS, Linux)                                    |
+| **Performance**            | Moderate                                                 | High performance, optimized for speed and scalability                     |
+| **Modularity**             | Monolithic, tightly coupled                              | Modular, lightweight, and composable                                      |
+| **Hosting**                | IIS only                                                 | Kestrel, IIS, Nginx, Apache, Docker, etc.                                 |
+| **Dependency Injection**   | Limited, requires third-party libraries                  | Built-in dependency injection                                             |
+| **Configuration**          | Web.config/XML-based                                     | JSON, XML, INI, and environment variables                                 |
+| **Middleware**             | HTTP Modules and HTTP Handlers                           | Middleware pipeline                                                       |
+| **Development Model**      | Web Forms, MVC, Web API                                  | Unified framework for MVC, Web API, and Razor Pages                       |
+| **Open Source**            | Partially open source                                    | Fully open source                                                         |
+| **Tooling**                | Visual Studio (Windows)                                  | Visual Studio, Visual Studio Code, Command-line                           |
+| **Package Management**     | NuGet                                                    | NuGet, and integration with other package managers                        |
+| **Versioning**             | Versioned as part of the .NET Framework releases         | Independently versioned, faster release cycle                             |
+| **Deployment**             | Typically through Visual Studio and IIS deployment tools | Flexible deployment options including command-line tools, CI/CD pipelines |
+| **Libraries**              | Uses .NET Framework libraries                            | Uses .NET Core libraries, optimized for cross-platform                    |
+| **Side-by-Side Execution** | Limited                                                  | Supports side-by-side versioning of applications                          |
+| **Security**               | Windows Authentication, Membership Providers             | Claims-based, policy-based authorization, OAuth, OpenID Connect           |
+| **SignalR**                | Older SignalR version with less feature parity           | Improved SignalR with better performance and features                     |
+
+### Summary of Key Differences:
+
+1. **Platform Support**:
+
+   - **ASP.NET**: Only runs on Windows.
+   - **ASP.NET Core**: Cross-platform, running on Windows, macOS, and Linux.
+
+2. **Performance and Modularity**:
+
+   - **ASP.NET**: Moderate performance, monolithic architecture.
+   - **ASP.NET Core**: High performance, designed for scalability and modularity.
+
+3. **Hosting and Deployment**:
+
+   - **ASP.NET**: Hosted on IIS.
+   - **ASP.NET Core**: Can be hosted on various servers (Kestrel, IIS, Nginx, Apache, Docker).
+
+4. **Configuration and Dependency Injection**:
+
+   - **ASP.NET**: Uses XML-based configuration (Web.config), limited DI.
+   - **ASP.NET Core**: Uses modern configuration (JSON, environment variables), built-in DI.
+
+5. **Development and Tooling**:
+
+   - **ASP.NET**: Primarily developed using Visual Studio on Windows.
+   - **ASP.NET Core**: Developed using Visual Studio, Visual Studio Code, and command-line tools, supporting multiple platforms.
+
+6. **Framework and Libraries**:
+   - **ASP.NET**: Based on the full .NET Framework.
+   - **ASP.NET Core**: Based on the .NET Core and .NET 5+ libraries, supporting modern development practices and cross-platform functionality.
+
+### Conclusion:
+
+ASP.NET Core represents a significant evolution from ASP.NET, offering a modern, high-performance, and cross-platform framework for building web applications. It brings improvements in modularity, performance, and flexibility, making it suitable for a wide range of application scenarios.
+
+## DB Context
+
+Using a Data Context (often implemented as a DbContext class in frameworks like Entity Framework) is a central practice in modern data-driven application development. Here's why it's important and beneficial:
+
+### Why Use a Data Context (DbContext)?
+
+1. **Abstraction and Simplification**:
+
+   - The Data Context abstracts the underlying database operations, making it easier to interact with the database without writing raw SQL queries.
+   - It provides a high-level API for performing CRUD (Create, Read, Update, Delete) operations, reducing boilerplate code.
+
+2. **Centralized Data Management**:
+
+   - The Data Context serves as a central point for all database interactions in an application, ensuring consistency and centralized configuration for data access logic.
+
+3. **Change Tracking**:
+
+   - It automatically tracks changes made to entities (objects) and manages these changes to generate the appropriate SQL commands for updating the database.
+
+4. **Transaction Management**:
+
+   - The Data Context can manage database transactions, ensuring data integrity and consistency. It can roll back changes if any part of the transaction fails.
+
+5. **Querying Capabilities**:
+
+   - It provides powerful querying capabilities through LINQ (Language Integrated Query), allowing for complex queries to be written in a type-safe manner.
+
+6. **Entity Management**:
+
+   - It helps manage the lifecycle of entities, including state management (e.g., Added, Modified, Deleted, Unchanged).
+
+7. **Concurrency Control**:
+
+   - It can handle concurrency conflicts, ensuring that the application can manage scenarios where multiple users are updating the same data simultaneously.
+
+8. **Schema Management and Migrations**:
+   - In frameworks like Entity Framework, the DbContext class can be used to manage database schemas and apply migrations, keeping the database schema in sync with the application models.
+
+### Why Use the DbContext Class?
+
+The `DbContext` class is the implementation of the Data Context in Entity Framework. Here’s why it’s specifically useful:
+
+1. **Model Configuration**:
+
+   - It allows for configuring the entity models and relationships using the Fluent API or data annotations.
+
+2. **DbSet Properties**:
+
+   - The `DbSet<T>` properties represent collections of entities and allow querying and working with the entities in the database.
+   - Example:
+     ```csharp
+     public DbSet<Student> Students { get; set; }
+     public DbSet<Course> Courses { get; set; }
+     ```
+
+3. **Connection and Context Management**:
+
+   - The `DbContext` class manages the database connection and ensures it is properly opened and closed during operations.
+
+4. **Integration with ASP.NET Core**:
+   - It integrates seamlessly with ASP.NET Core's dependency injection system, making it easy to manage the lifecycle of the context and inject it into services and controllers.
+
+### Example: Using DbContext in ASP.NET Core
+
+#### Step 1: Define Entity Classes
+
+```csharp
+public class Student
+{
+    public int StudentId { get; set; }
+    public string Name { get; set; }
+    public DateTime EnrollmentDate { get; set; }
+}
+
+public class Course
+{
+    public int CourseId { get; set; }
+    public string Title { get; set; }
+    public int Credits { get; set; }
+}
+```
+
+#### Step 2: Define the DbContext Class
+
+```csharp
+using Microsoft.EntityFrameworkCore;
+
+public class SchoolContext : DbContext
+{
+    public SchoolContext(DbContextOptions<SchoolContext> options) : base(options)
+    {
+    }
+
+    public DbSet<Student> Students { get; set; }
+    public DbSet<Course> Courses { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Student>().ToTable("Student");
+        modelBuilder.Entity<Course>().ToTable("Course");
+    }
+}
+```
+
+#### Step 3: Register DbContext in Startup.cs
+
+```csharp
+public class Startup
+{
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddDbContext<SchoolContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+        services.AddControllersWithViews();
+    }
+}
+```
+
+#### Step 4: Using DbContext in a Controller
+
+```csharp
+using Microsoft.AspNetCore.Mvc;
+using System.Linq;
+
+public class StudentsController : Controller
+{
+    private readonly SchoolContext _context;
+
+    public StudentsController(SchoolContext context)
+    {
+        _context = context;
+    }
+
+    public IActionResult Index()
+    {
+        var students = _context.Students.ToList();
+        return View(students);
+    }
+
+    [HttpPost]
+    public IActionResult Create(Student student)
+    {
+        if (ModelState.IsValid)
+        {
+            _context.Students.Add(student);
+            _context.SaveChanges();
+            return RedirectToAction(nameof(Index));
+        }
+        return View(student);
+    }
+}
+```
+
+### Summary
+
+Using a Data Context, specifically the DbContext class in Entity Framework, provides a robust, high-level framework for managing database interactions. It simplifies data access, ensures consistency, and leverages powerful features like LINQ, change tracking, and transaction management, making it an essential part of modern data-driven application development.
+
+## Validators
+
+### Types of Validators
+
+1. **RequiredFieldValidator**
+2. **CompareValidator**
+3. **RangeValidator**
+4. **RegularExpressionValidator**
+5. **CustomValidator**
+6. **ValidationSummary**
+
+### 1. RequiredFieldValidator
+
+**Purpose**: Ensures that the user does not skip an input field.
+
+**Code Example**:
+
+```html
+<asp:TextBox ID="txtName" runat="server"></asp:TextBox>
+<asp:RequiredFieldValidator
+  ID="rfvName"
+  runat="server"
+  ControlToValidate="txtName"
+  ErrorMessage="Name is required!"
+  ForeColor="Red"
+>
+</asp:RequiredFieldValidator>
+```
+
+### 2. CompareValidator
+
+**Purpose**: Compares the value of one input control to another input control or a constant value.
+
+**Code Example**:
+
+```html
+<asp:TextBox ID="txtPassword" runat="server" TextMode="Password"></asp:TextBox>
+<asp:TextBox
+  ID="txtConfirmPassword"
+  runat="server"
+  TextMode="Password"
+></asp:TextBox>
+<asp:CompareValidator
+  ID="cvPasswords"
+  runat="server"
+  ControlToValidate="txtConfirmPassword"
+  ControlToCompare="txtPassword"
+  ErrorMessage="Passwords do not match!"
+  ForeColor="Red"
+>
+</asp:CompareValidator>
+```
+
+### 3. RangeValidator
+
+**Purpose**: Ensures that the value of an input control falls within a specified range.
+
+**Code Example**:
+
+```html
+<asp:TextBox ID="txtAge" runat="server"></asp:TextBox>
+<asp:RangeValidator
+  ID="rvAge"
+  runat="server"
+  ControlToValidate="txtAge"
+  MinimumValue="18"
+  MaximumValue="65"
+  Type="Integer"
+  ErrorMessage="Age must be between 18 and 65!"
+  ForeColor="Red"
+>
+</asp:RangeValidator>
+```
+
+### 4. RegularExpressionValidator
+
+**Purpose**: Ensures that the value of an input control matches a specified regular expression pattern.
+
+**Code Example**:
+
+```html
+<asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>
+<asp:RegularExpressionValidator
+  ID="revEmail"
+  runat="server"
+  ControlToValidate="txtEmail"
+  ValidationExpression="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"
+  ErrorMessage="Invalid email format!"
+  ForeColor="Red"
+>
+</asp:RegularExpressionValidator>
+```
+
+### 5. CustomValidator
+
+**Purpose**: Allows for custom server-side and client-side validation.
+
+**Code Example**:
+
+```html
+<asp:TextBox ID="txtCustom" runat="server"></asp:TextBox>
+<asp:CustomValidator
+  ID="cvCustom"
+  runat="server"
+  ControlToValidate="txtCustom"
+  ErrorMessage="Custom validation failed!"
+  OnServerValidate="cvCustom_ServerValidate"
+  ForeColor="Red"
+>
+</asp:CustomValidator>
+
+<script type="text/javascript">
+  function validateCustom(source, args) {
+    args.IsValid = args.Value.length >= 5;
+  }
+</script>
+
+<asp:Button
+  ID="btnSubmit"
+  runat="server"
+  Text="Submit"
+  OnClientClick="validateCustom"
+/>
+```
+
+**Server-side Validation Code**:
+
+```csharp
+protected void cvCustom_ServerValidate(object source, ServerValidateEventArgs args)
+{
+    args.IsValid = args.Value.Length >= 5;
+}
+```
+
+### 6. ValidationSummary
+
+**Purpose**: Displays a summary of all validation errors on the page.
+
+**Code Example**:
+
+```html
+<asp:ValidationSummary
+  ID="vsSummary"
+  runat="server"
+  HeaderText="Please correct the following errors:"
+  ForeColor="Red"
+>
+</asp:ValidationSummary>
+```
+
+### Putting It All Together
+
+Here is a complete example of an ASP.NET Web Form using various validators:
+
+**ASPX Page**:
+
+```html
+<%@ Page Language="C#" AutoEventWireup="true"
+CodeFile="ValidationExample.aspx.cs" Inherits="ValidationExample" %>
+
+<!doctype html>
+<html>
+  <head>
+    <title>Validation Example</title>
+  </head>
+  <body>
+    <form id="form1" runat="server">
+      <div>
+        <asp:Label ID="lblName" runat="server" Text="Name:"></asp:Label>
+        <asp:TextBox ID="txtName" runat="server"></asp:TextBox>
+        <asp:RequiredFieldValidator
+          ID="rfvName"
+          runat="server"
+          ControlToValidate="txtName"
+          ErrorMessage="Name is required!"
+          ForeColor="Red"
+        >
+        </asp:RequiredFieldValidator>
+        <br /><br />
+
+        <asp:Label ID="lblPassword" runat="server" Text="Password:"></asp:Label>
+        <asp:TextBox
+          ID="txtPassword"
+          runat="server"
+          TextMode="Password"
+        ></asp:TextBox>
+        <asp:Label
+          ID="lblConfirmPassword"
+          runat="server"
+          Text="Confirm Password:"
+        ></asp:Label>
+        <asp:TextBox
+          ID="txtConfirmPassword"
+          runat="server"
+          TextMode="Password"
+        ></asp:TextBox>
+        <asp:CompareValidator
+          ID="cvPasswords"
+          runat="server"
+          ControlToValidate="txtConfirmPassword"
+          ControlToCompare="txtPassword"
+          ErrorMessage="Passwords do not match!"
+          ForeColor="Red"
+        >
+        </asp:CompareValidator>
+        <br /><br />
+
+        <asp:Label ID="lblAge" runat="server" Text="Age:"></asp:Label>
+        <asp:TextBox ID="txtAge" runat="server"></asp:TextBox>
+        <asp:RangeValidator
+          ID="rvAge"
+          runat="server"
+          ControlToValidate="txtAge"
+          MinimumValue="18"
+          MaximumValue="65"
+          Type="Integer"
+          ErrorMessage="Age must be between 18 and 65!"
+          ForeColor="Red"
+        >
+        </asp:RangeValidator>
+        <br /><br />
+
+        <asp:Label ID="lblEmail" runat="server" Text="Email:"></asp:Label>
+        <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>
+        <asp:RegularExpressionValidator
+          ID="revEmail"
+          runat="server"
+          ControlToValidate="txtEmail"
+          ValidationExpression="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"
+          ErrorMessage="Invalid email format!"
+          ForeColor="Red"
+        >
+        </asp:RegularExpressionValidator>
+        <br /><br />
+
+        <asp:Label ID="lblCustom" runat="server" Text="Custom:"></asp:Label>
+        <asp:TextBox ID="txtCustom" runat="server"></asp:TextBox>
+        <asp:CustomValidator
+          ID="cvCustom"
+          runat="server"
+          ControlToValidate="txtCustom"
+          ErrorMessage="Custom validation failed!"
+          OnServerValidate="cvCustom_ServerValidate"
+          ClientValidationFunction="validateCustom"
+          ForeColor="Red"
+        >
+        </asp:CustomValidator>
+        <br /><br />
+
+        <asp:Button ID="btnSubmit" runat="server" Text="Submit" />
+        <asp:ValidationSummary
+          ID="vsSummary"
+          runat="server"
+          HeaderText="Please correct the following errors:"
+          ForeColor="Red"
+        >
+        </asp:ValidationSummary>
+      </div>
+    </form>
+  </body>
+</html>
+```
+
+**Code-Behind (ValidationExample.aspx.cs)**:
+
+```csharp
+using System;
+
+public partial class ValidationExample : System.Web.UI.Page
+{
+    protected void Page_Load(object sender, EventArgs e)
+    {
+    }
+
+    protected void cvCustom_ServerValidate(object source, ServerValidateEventArgs args)
+    {
+        args.IsValid = args.Value.Length >= 5;
+    }
+}
+```
+
+### Summary
+
+Using ASP.NET validators ensures that user input is properly validated before processing. Validators help maintain data integrity, provide user feedback, and enforce business rules effectively. By using these controls, developers can create robust web applications with minimal effort.
