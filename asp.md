@@ -494,3 +494,365 @@ using (SqlConnection con = new SqlConnection(connectionString))
 - **Control Flow**: Managed using conditional statements, loops, and jump statements.
 - **Collections**: Offer various ways to manage and store groups of objects.
 - **Strings and Arrays**: Essential components for handling sequences of characters and collections of elements.
+
+## Difference between Razor and Razor Pages
+
+| **Feature**           | **Razor**                                                                      | **Razor Pages**                                                                                |
+| --------------------- | ------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------- |
+| **Definition**        | Razor is a syntax for embedding server-based code into web pages using C#.     | Razor Pages is a page-based programming model in ASP.NET Core.                                 |
+| **Usage**             | Primarily used in MVC views to generate HTML dynamically.                      | Used to create page-focused web applications with a simpler model than MVC.                    |
+| **Structure**         | Part of the MVC framework, specifically used in Views (e.g., `.cshtml` files). | Each page is self-contained with its model and handlers, eliminating the need for controllers. |
+| **File Extension**    | `.cshtml` files for views.                                                     | `.cshtml` files for pages, typically placed in the `Pages` directory.                          |
+| **Code Organization** | Code-behind logic is in Controllers.                                           | Code-behind logic is in Page Model (`.cshtml.cs`) files.                                       |
+| **URL Routing**       | Uses routing defined in `Startup.cs` and controller actions.                   | Uses conventional URL routing based on file path structure.                                    |
+| **Learning Curve**    | Higher, due to the separation of concerns in MVC (Model, View, Controller).    | Lower, as it is more straightforward with less boilerplate code.                               |
+| **Scenarios**         | Best for complex applications needing full MVC patterns.                       | Ideal for simpler or page-focused applications where full MVC isn't necessary.                 |
+| **Development Speed** | Slower, due to the need to manage separate models, views, and controllers.     | Faster, with less setup and simpler file structures.                                           |
+| **Flexibility**       | More flexible and powerful, suitable for large-scale applications.             | Less flexible but more streamlined for specific use cases.                                     |
+| **Data Binding**      | Utilizes ViewModels passed to Views.                                           | Directly binds properties in Page Models to UI elements.                                       |
+| **Handling Requests** | Uses controller methods to handle requests and return views.                   | Uses handler methods within the page model (e.g., `OnGet`, `OnPost`).                          |
+
+## Difference between ASP.NET and .NET
+
+| **Feature**                 | **ASP.NET**                                                                                             | **.NET**                                                                                                                    |
+| --------------------------- | ------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| **Definition**              | A framework for building web applications and services.                                                 | A comprehensive development platform and runtime environment for building various types of applications.                    |
+| **Scope**                   | Focused specifically on web development (web apps, web services, and APIs).                             | Encompasses a wide range of application types, including desktop, mobile, cloud, web, IoT, and gaming.                      |
+| **Components**              | Includes ASP.NET MVC, ASP.NET Web API, ASP.NET Web Pages, and ASP.NET Core.                             | Includes the .NET runtime, .NET libraries, and various frameworks like ASP.NET, Windows Forms, WPF, Xamarin, and .NET Core. |
+| **Primary Languages**       | C#, VB.NET, F# (primarily for web applications).                                                        | C#, VB.NET, F#, and more, supporting various application types.                                                             |
+| **Application Types**       | Web applications, web services, RESTful APIs.                                                           | Web, desktop (Windows Forms, WPF), mobile (Xamarin), cloud, IoT, gaming (Unity).                                            |
+| **Platform**                | Originally Windows-only, but ASP.NET Core is cross-platform (Windows, Linux, macOS).                    | Cross-platform (Windows, Linux, macOS) with .NET Core/.NET 5 and later. .NET Framework is Windows-only.                     |
+| **Hosting**                 | IIS for ASP.NET Framework, cross-platform hosting options for ASP.NET Core (e.g., Kestrel, IIS, Nginx). | Depends on the application type: IIS for web, local/embedded for desktop, various cloud options (Azure, AWS, etc.).         |
+| **Runtime**                 | Utilizes the .NET runtime for web applications.                                                         | Provides the runtime environment (CLR for .NET Framework, CoreCLR for .NET Core/.NET 5 and later).                          |
+| **Libraries and APIs**      | Web-specific libraries and APIs for building and interacting with web applications.                     | Extensive libraries and APIs for all types of applications, including web, desktop, mobile, and cloud.                      |
+| **Development Environment** | Typically developed using Visual Studio, Visual Studio Code, or JetBrains Rider.                        | Same tools as ASP.NET, with additional tools for specific application types (e.g., Xamarin for mobile).                     |
+| **Ecosystem**               | Part of the larger .NET ecosystem, often used in conjunction with other .NET technologies.              | The overarching ecosystem that includes ASP.NET as one of its components.                                                   |
+
+## Difference between ASP.NET and Razor Pages
+
+| **Feature**              | **MVC (Model-View-Controller)**                                                                                                | **Razor Pages**                                                                            |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| **Definition**           | A design pattern and framework for building web applications by separating concerns into Model, View, and Controller.          | A page-based programming model for building web applications with simplified architecture. |
+| **Structure**            | Divides the application into three main components: Models, Views, and Controllers.                                            | Combines page-specific logic and markup in a single file, with optional code-behind files. |
+| **Components**           | Models (data and business logic), Views (UI), Controllers (handling user input and interactions).                              | Each page consists of a Razor file (.cshtml) and an optional Page Model file (.cshtml.cs). |
+| **File Organization**    | Separate directories for Models, Views, and Controllers.                                                                       | Pages are typically placed in the `Pages` directory, with related code-behind files.       |
+| **URL Routing**          | Uses attribute-based or convention-based routing defined in `Startup.cs`.                                                      | Uses conventional URL routing based on the file path structure of the pages.               |
+| **Code-Behind Logic**    | Controllers handle the logic for multiple views.                                                                               | Page Model files (`.cshtml.cs`) handle the logic for individual pages.                     |
+| **Development Approach** | Ideal for applications with complex business logic and multiple views.                                                         | Ideal for simpler, page-focused applications where each page handles its own logic.        |
+| **Data Binding**         | Utilizes ViewModels passed to Views.                                                                                           | Directly binds properties in Page Models to UI elements.                                   |
+| **Request Handling**     | Controllers handle requests and determine which view to render.                                                                | Handler methods within the page model (e.g., `OnGet`, `OnPost`) handle requests.           |
+| **Learning Curve**       | Steeper, due to the need to understand the separation of concerns and the interactions between Models, Views, and Controllers. | Shallower, as it offers a more straightforward development experience with less setup.     |
+| **Flexibility**          | Highly flexible and suitable for large, complex applications with extensive features.                                          | More streamlined and suitable for smaller, less complex applications.                      |
+| **View Rendering**       | Views are rendered through controller actions.                                                                                 | Pages are rendered directly from Razor files.                                              |
+| **Use Cases**            | Best for applications requiring complex UI interactions, multiple view management, and extensive business logic.               | Best for applications with a simpler page-based structure and minimal business logic.      |
+
+## Difference between Razor and ASPX
+
+| **Feature**                 | **Razor**                                                                                                        | **ASPX**                                                                                                                      |
+| --------------------------- | ---------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| **Definition**              | A markup syntax for embedding server-based code into webpages using C#.                                          | A traditional ASP.NET Web Forms technology for creating dynamic web pages.                                                    |
+| **File Extension**          | `.cshtml` (C#) or `.vbhtml` (VB)                                                                                 | `.aspx` for web forms and `.aspx.cs` for code-behind files.                                                                   |
+| **Development Model**       | Part of ASP.NET MVC and ASP.NET Core, follows the MVC pattern.                                                   | Part of ASP.NET Web Forms, follows an event-driven model with a separation of markup and code-behind.                         |
+| **Syntax**                  | Lightweight, concise syntax mixing HTML and server code using `@` symbol.                                        | Traditional, verbose syntax with server controls and code-behind model using `runat="server"`.                                |
+| **Separation of Concerns**  | Emphasizes separation of concerns, typically with clean separation between markup (view) and logic (controller). | Combines markup and logic within the page using code-behind files for event handling and server controls.                     |
+| **View Engine**             | Razor View Engine for rendering views.                                                                           | Web Forms View Engine for rendering forms and controls.                                                                       |
+| **State Management**        | Limited built-in state management, relies on MVC principles.                                                     | Built-in state management mechanisms like ViewState, Session, and ControlState.                                               |
+| **Performance**             | Generally faster due to lightweight syntax and reduced overhead.                                                 | Can be slower due to heavier view state management and page lifecycle.                                                        |
+| **Learning Curve**          | Easier to learn for developers familiar with HTML, CSS, and C#.                                                  | Steeper learning curve due to the event-driven model and complex page lifecycle.                                              |
+| **Control Model**           | Uses HTML helpers and tag helpers to render HTML elements.                                                       | Uses server controls that automatically generate HTML and manage state.                                                       |
+| **Flexibility**             | High flexibility and control over the HTML output.                                                               | Less control over the HTML output due to server control abstraction.                                                          |
+| **Usage Scenarios**         | Ideal for creating modern, lightweight web applications with clean separation of concerns.                       | Suitable for building applications where rapid development with rich server controls and built-in state management is needed. |
+| **Tooling**                 | Well-supported in modern development environments like Visual Studio, Visual Studio Code.                        | Primarily supported in Visual Studio with rich designer tools.                                                                |
+| **Client-Side Integration** | Easier integration with client-side frameworks and libraries like Angular, React, or Vue.js.                     | Can be integrated with client-side frameworks but typically requires more effort.                                             |
+| **MVC Compatibility**       | Designed specifically for MVC architecture.                                                                      | Can be used with MVC but is inherently designed for the Web Forms model.                                                      |
+
+### Summary of Key Differences:
+
+- **Syntax and Markup**: Razor uses a concise, `@`-based syntax, while ASPX uses a more verbose syntax with server controls.
+- **Development Model**: Razor is part of the MVC pattern, promoting clean separation of concerns. ASPX follows an event-driven model with code-behind files.
+- **State Management**: Razor relies on MVC principles with limited built-in state management, whereas ASPX uses ViewState, Session, and other state management features.
+- **Performance and Flexibility**: Razor offers better performance and greater control over HTML output. ASPX provides rapid development with rich server controls but can be slower due to overhead.
+
+## All Validators
+
+### ASP.NET Web Form (Default.aspx)
+
+```html
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs"
+Inherits="Default" %>
+
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head runat="server">
+    <title>ASP.NET Web Form with Validators</title>
+  </head>
+  <body>
+    <form id="form1" runat="server">
+      <div>
+        <h2>Registration Form</h2>
+        <asp:Label
+          ID="lblName"
+          runat="server"
+          Text="Name:"
+          AssociatedControlID="txtName"
+        ></asp:Label>
+        <asp:TextBox ID="txtName" runat="server"></asp:TextBox>
+        <asp:RequiredFieldValidator
+          ID="rfvName"
+          runat="server"
+          ControlToValidate="txtName"
+          ErrorMessage="Name is required."
+          ForeColor="Red"
+        ></asp:RequiredFieldValidator>
+        <br /><br />
+
+        <asp:Label
+          ID="lblEmail"
+          runat="server"
+          Text="Email:"
+          AssociatedControlID="txtEmail"
+        ></asp:Label>
+        <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>
+        <asp:RequiredFieldValidator
+          ID="rfvEmail"
+          runat="server"
+          ControlToValidate="txtEmail"
+          ErrorMessage="Email is required."
+          ForeColor="Red"
+        ></asp:RequiredFieldValidator>
+        <asp:RegularExpressionValidator
+          ID="revEmail"
+          runat="server"
+          ControlToValidate="txtEmail"
+          ErrorMessage="Invalid email format."
+          ValidationExpression="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"
+          ForeColor="Red"
+        ></asp:RegularExpressionValidator>
+        <br /><br />
+
+        <asp:Label
+          ID="lblAge"
+          runat="server"
+          Text="Age:"
+          AssociatedControlID="txtAge"
+        ></asp:Label>
+        <asp:TextBox ID="txtAge" runat="server"></asp:TextBox>
+        <asp:RequiredFieldValidator
+          ID="rfvAge"
+          runat="server"
+          ControlToValidate="txtAge"
+          ErrorMessage="Age is required."
+          ForeColor="Red"
+        ></asp:RequiredFieldValidator>
+        <asp:RangeValidator
+          ID="rvAge"
+          runat="server"
+          ControlToValidate="txtAge"
+          MinimumValue="18"
+          MaximumValue="99"
+          Type="Integer"
+          ErrorMessage="Age must be between 18 and 99."
+          ForeColor="Red"
+        ></asp:RangeValidator>
+        <br /><br />
+
+        <asp:Label
+          ID="lblPassword"
+          runat="server"
+          Text="Password:"
+          AssociatedControlID="txtPassword"
+        ></asp:Label>
+        <asp:TextBox
+          ID="txtPassword"
+          runat="server"
+          TextMode="Password"
+        ></asp:TextBox>
+        <asp:RequiredFieldValidator
+          ID="rfvPassword"
+          runat="server"
+          ControlToValidate="txtPassword"
+          ErrorMessage="Password is required."
+          ForeColor="Red"
+        ></asp:RequiredFieldValidator>
+        <asp:RegularExpressionValidator
+          ID="revPassword"
+          runat="server"
+          ControlToValidate="txtPassword"
+          ErrorMessage="Password must be at least 8 characters long and contain at least one number."
+          ValidationExpression="^(?=.*[0-9]).{8,}$"
+          ForeColor="Red"
+        ></asp:RegularExpressionValidator>
+        <br /><br />
+
+        <asp:Label
+          ID="lblConfirmPassword"
+          runat="server"
+          Text="Confirm Password:"
+          AssociatedControlID="txtConfirmPassword"
+        ></asp:Label>
+        <asp:TextBox
+          ID="txtConfirmPassword"
+          runat="server"
+          TextMode="Password"
+        ></asp:TextBox>
+        <asp:RequiredFieldValidator
+          ID="rfvConfirmPassword"
+          runat="server"
+          ControlToValidate="txtConfirmPassword"
+          ErrorMessage="Confirm Password is required."
+          ForeColor="Red"
+        ></asp:RequiredFieldValidator>
+        <asp:CompareValidator
+          ID="cvPasswords"
+          runat="server"
+          ControlToCompare="txtPassword"
+          ControlToValidate="txtConfirmPassword"
+          ErrorMessage="Passwords do not match."
+          ForeColor="Red"
+        ></asp:CompareValidator>
+        <br /><br />
+
+        <asp:Button
+          ID="btnSubmit"
+          runat="server"
+          Text="Submit"
+          OnClick="btnSubmit_Click"
+        />
+      </div>
+    </form>
+  </body>
+</html>
+```
+
+### Code-Behind (Default.aspx.cs)
+
+```csharp
+using System;
+using System.Web.UI;
+
+public partial class Default : Page
+{
+    protected void Page_Load(object sender, EventArgs e)
+    {
+    }
+
+    protected void btnSubmit_Click(object sender, EventArgs e)
+    {
+        if (Page.IsValid)
+        {
+            // Handle form submission, e.g., save data to database
+            Response.Write("Form submitted successfully!");
+        }
+    }
+}
+```
+
+### Explanation:
+
+1. **Form Fields and Labels**:
+
+   - `TextBox` controls for Name, Email, Age, Password, and Confirm Password.
+   - `Label` controls associated with each `TextBox` for user guidance.
+
+2. **Validators**:
+
+   - **RequiredFieldValidator**: Ensures the fields are not left empty.
+   - **RegularExpressionValidator**: Validates email format and enforces a password policy.
+   - **RangeValidator**: Ensures the age is between 18 and 99.
+   - **CompareValidator**: Ensures the Password and Confirm Password fields match.
+
+3. **Submit Button**:
+   - Triggers the `btnSubmit_Click` event to handle form submission.
+   - Checks if the page is valid (`Page.IsValid`) before processing the data.
+
+## Difference between ADO.NET and ASP.NET
+
+| **Feature**               | **ADO.NET**                                                                                                   | **ASP.NET**                                                                                                              |
+| ------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| **Definition**            | A data access technology that provides a set of components for accessing data sources (e.g., databases).      | A web application framework for building web applications and services.                                                  |
+| **Primary Purpose**       | To interact with data sources such as databases, perform CRUD operations, and manage data in applications.    | To develop dynamic web pages, web applications, and web services.                                                        |
+| **Components**            | Data providers (SqlConnection, SqlCommand, SqlDataReader), DataSet, DataTable, DataAdapter.                   | Web Forms, MVC, Web API, Razor Pages, SignalR, Blazor.                                                                   |
+| **Usage Context**         | Used for data manipulation within applications (e.g., fetching, updating, and deleting data from a database). | Used to build and manage the front-end and back-end of web applications.                                                 |
+| **Application Type**      | Data-centric operations in various types of applications (web, desktop, mobile).                              | Web-centric operations for creating interactive and dynamic websites.                                                    |
+| **Technologies Included** | Data access libraries (System.Data namespace), Entity Framework (an ORM for data access).                     | Web development frameworks (ASP.NET MVC, ASP.NET Core, Razor Pages), web APIs, and SignalR for real-time communications. |
+| **Programming Model**     | Procedural and object-oriented programming for data operations.                                               | Combination of server-side and client-side programming for web application development.                                  |
+| **Data Handling**         | Direct database connections, executing SQL queries, and managing disconnected data with DataSets.             | Request/response model, handling user input, rendering HTML, and managing state (sessions, cookies).                     |
+| **Deployment**            | Can be used in any .NET application type (web, desktop, mobile).                                              | Specifically for web applications hosted on web servers (e.g., IIS, Kestrel).                                            |
+| **Integration**           | Often integrated within ASP.NET applications for data access.                                                 | Can integrate with ADO.NET for data access and manipulation.                                                             |
+| **Learning Curve**        | Requires knowledge of SQL and data access patterns.                                                           | Requires knowledge of web development concepts, including HTML, CSS, JavaScript, and server-side programming.            |
+| **Examples**              | Connecting to a SQL database to perform CRUD operations.                                                      | Creating a web form to submit data to a server and display results to users.                                             |
+
+### Key Points:
+
+- **ADO.NET** is focused on data access, providing the necessary tools to connect to databases, execute commands, and manage data.
+- **ASP.NET** is focused on web development, providing the frameworks and tools to build dynamic web applications and services.
+
+### Use Case Scenario:
+
+- **ADO.NET**: You would use ADO.NET when you need to perform database operations within your application, such as fetching data from a SQL Server database and displaying it in a grid.
+- **ASP.NET**: You would use ASP.NET when you need to create a full-featured web application that includes user authentication, dynamic content rendering, and various web services.
+
+## Life Cycle of ASP
+
+The life cycle of an ASP.NET application consists of a series of steps that are followed when a request is made to an ASP.NET web application. Here is a detailed explanation of the life cycle:
+
+### 1. **Application Start**
+
+- **Application Start**: This stage involves initializing resources needed by the application. Global.asax or Startup.cs files typically contain code that runs during application start-up.
+- **Configuration**: Configuration files (like `web.config`) are read and application settings are applied.
+
+### 2. **Request Received**
+
+- **Request Object Creation**: ASP.NET creates an `HttpRequest` object to hold the details of the current request.
+- **Response Object Creation**: An `HttpResponse` object is created to manage the response that will be sent to the client.
+
+### 3. **Routing**
+
+- **URL Routing**: The routing module uses the URL routing system to determine how to handle the incoming request. It maps the request to the appropriate handler (such as MVC controllers, Razor Pages, or Web API controllers).
+
+### 4. **HTTP Pipeline**
+
+- **BeginRequest Event**: The `BeginRequest` event is the first event fired when an HTTP request is received.
+- **AuthenticateRequest Event**: This event handles the authentication of the user.
+- **AuthorizeRequest Event**: This event determines whether the authenticated user has permission to access the requested resources.
+- **ResolveRequestCache Event**: This event determines whether the requested resource is available in the cache.
+- **AcquireRequestState Event**: This event fetches the state (like session state) related to the current request.
+- **PreRequestHandlerExecute Event**: This event occurs before the request handler executes.
+- **RequestHandler Execution**: The appropriate request handler (MVC controller, Razor Page, etc.) processes the request and generates the response.
+- **PostRequestHandlerExecute Event**: This event occurs after the request handler has executed.
+- **ReleaseRequestState Event**: This event saves any state information (like session state) after the request handler executes.
+- **UpdateRequestCache Event**: This event updates the cache with the response if caching is enabled.
+- **EndRequest Event**: This is the last event fired in the request processing pipeline.
+
+### 5. **Request Handler Execution**
+
+- **Page Initialization**: If the request is for a web form, the `Page` class is initialized.
+- **Load**: The page’s `Load` event is triggered, allowing code to execute for preparing the page.
+- **Postback Handling**: If the request is a postback, event handlers for the postback events are called.
+- **Rendering**: The page is rendered to HTML. The `Render` method generates the HTML that is sent to the client.
+
+### 6. **Response Sent**
+
+- **Response Generation**: The response object (`HttpResponse`) holds the generated content and headers that are to be sent to the client.
+- **Flush**: The response is sent to the client.
+
+### 7. **Application End**
+
+- **Dispose**: The application cleans up resources. The `Dispose` method is called on any resources that need explicit cleanup.
+- **Application End**: The `Application_End` event in Global.asax is triggered when the application ends or is shut down.
+
+### Summary of Key Events:
+
+- **Application_Start**: When the application starts.
+- **BeginRequest**: When a request is received.
+- **AuthenticateRequest**: Authentication logic.
+- **AuthorizeRequest**: Authorization logic.
+- **ResolveRequestCache**: Check if the response is in cache.
+- **AcquireRequestState**: Session state acquisition.
+- **PreRequestHandlerExecute**: Before executing request handler.
+- **RequestHandler Execution**: Processing the request.
+- **PostRequestHandlerExecute**: After executing request handler.
+- **ReleaseRequestState**: Saving session state.
+- **UpdateRequestCache**: Updating cache with response.
+- **EndRequest**: When the request ends.
+- **Application_End**: When the application ends.
